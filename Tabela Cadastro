@@ -1,0 +1,28 @@
+-- Structure for tavle EMPLOYEE(OID= 81147) :
+--
+CREATE TABLE "HR"."EMPLOYEE" (
+	"EMP_ID" integer NOT NULL,
+	"POSITION" 	varchar(40) NOT NULL,
+	"FIRST_NAME" varchar(30) NOT NULL,
+	"LAST_NAME" varchar(30) NOT NULL,
+	GENDER char(1),
+	"MARITAL_STATUS" char(1),
+	"BIRTH_DATE" date,
+	"HIRE_DATE" date,
+	"IS_ACTIVE" boolean DEFAULT true,
+	"SALARY" double precision,
+	"DETAILS" bytea,
+	"DEPT_ID" integer,
+	"MANAGER_ID" integer
+) WITHOUT OIDS;
+--
+-- Structure for table city (OID = 81176):
+--
+SET search_path = "Production", pg_catalog;
+CREATE TABLE "Production"."City"(
+	id integer NOT NULL,
+	name text 	NOT NULL,
+)
+
+	
+	
