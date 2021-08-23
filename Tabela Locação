@@ -1,0 +1,24 @@
+select veic.modelo, desp.nome, sum(loc.total) from locacao loc
+join veiculos veic on(loc.idveiculo = veiculo.idveiculo)
+join despachantes desp on (loc.iddespachante = desp.iddespachante)
+where month(loc.datalocacao) = 2 and year(loc.datalocacao) = 2021
+group by veic.modelo, desp.nome;
+
+select veic.modelo, desp,nome, month(loc.datalocacao) mes, year(loc.datalocacao) Ano from locacao loc
+join veiculos veic on (loc.idveiuclos = veic.idveiculo)
+join despachantes desp on (loc.iddespachante = desp.iddespachante);
+
+LOAD DATA INPATH
+'/user/cloudera/locacao/clientes.csv'
+INTO TABLES CLIENTES;
+
+LOAD DATA LOCAL INPATH
+'/home/cloudera/Downloads/clientes.csv'
+INTO TABLE CLIENTES;
+
+create table locacao2 as select * from locacao where iddespachante = 2;
+create database teste;
+create table teste.locacao2 as select * from locacao where iddespachante = 2
+
+select * from teste.locacao2;
+select * from locacao2

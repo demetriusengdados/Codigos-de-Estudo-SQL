@@ -1,0 +1,25 @@
+client = pymongo.MongoClient()
+primeiro_db = client["primeiro_db"]
+minha_colecao = primeiro_db["cadastro_clientes"]
+type(minha_colecao)
+cliente1 = {"nome": "Maria", "Idade": 40, "Cidade": "São Paulo", "email": "maria@gmail.com"}
+cliente2 = {"nome": "João", "Idade": 20, "Cidade": "São Paulo", "email": "joao@gmail.com"}
+cliente3 = {"nome": "Paulo", "Idade": 56}
+minha_colecao.insert_many([cliente1,cliente2,cliente3])
+client.list_database_names()
+primeiro_db.list_collection_names()
+minha_colecao.count_documents({})
+minha_colecao.distinct('nome')
+minha_colecao.distinct('email')
+for doc in minha_colecao.find():
+  print(doc)
+for doc in minha_colecao.find({"Idade":{"$gte": 30}}):
+  print(doc)
+for doc in minha_colecao.find({"Cidade":"São Paulo"},{"_id":0, "nome":1, "email":1}):
+  print(doc)
+for doc in minha_colecao.find({"Cidade":"São Paulo"},{"email":0}):
+  print(doc)
+for doc in minha_colecao.find({"Cidade":"São Paulo"},{"email":0}):
+  print(doc)
+for doc in minha_colecao.find({"Cidade":"São Paulo"},{"email":1}):
+  print(doc)
