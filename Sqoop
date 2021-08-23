@@ -1,0 +1,38 @@
+sqoop list-databases -- connect jdbc:postgresql: //127.0.0.1/ 
+--username postgres --password 123456
+
+beeline
+!connect jdbc:hive2://
+create database retail_db;
+
+sqoop list-databases --connect jdbc:mysql://localhost/
+--username root
+--password cloudera
+
+sqoop list-tables --connect jdbc:mysql://localhost/retail_db
+--username root
+--password cloudera
+
+sqoop import --connect jdbc:mysql://localhost/retail_db 
+-- table customers --username root --password cloudera
+--hive-import --create-hive-table
+--hive-table retail_db.customers;
+
+sqoop import-all-tables --connect jdbc:mysql://localhost/retail_db
+--username root --password cloudera --hive-import
+--hive-overwrite --hive-database retail_db --create-hive-table --m 1;
+
+mysql -u root -pcloudera
+use retail_db;
+show tables;
+
+select count(*) from order_items;
+select * from categories;
+insert into categories values(59,8,"Teste");
+
+sqoop import --connect jdbc:mysql://localhost/detail_db
+--table categories --username root
+--password cloudera --hive-import 
+--hive-database retail_db --checkcolumn category_id 
+--incremental append
+--last-value 58

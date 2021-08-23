@@ -1,0 +1,11 @@
+--connect: string de conexão, deve conter o servidor e o banco de dados
+
+--username: nome de usário do banco de dados
+
+--password: senha na linha de comando
+
+--P: senha interativa(mais segura)
+
+-- --schema: schema do banco de dados, se existir
+
+--table: importa tabela especifica
