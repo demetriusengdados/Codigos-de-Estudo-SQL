@@ -708,4 +708,194 @@ IF EXISTS (
         AND sys.views.name = N'Ativos Microsoft'
 )
     DROP VIEW SchemaName.Ativos Microsoft
+GO 
+hive > show DATABASE;
+bigdata_klabin-- Insert rows into table 'Klabin';
+INSERT INTO Klabin
+( -- columns to insert data into
+ [Licença Office], [SQL], [Servidores], [Adobe], [Autodesk]
+)
+VALUES
+( -- first row: values for the columns in the list above
+ STRING_AGG(Nome), STRING_AGG(Nome), STRING_AGG(ProductName), STRING_AGG(ProductName), STRING_AGG(Version)
+),
+( -- second row: values for the columns in the list above
+ STRING_AGG(Version), STRING_AGG(ProductName), STRING_AGG(Version), INTEGER(NetBios), INTEGER(NetBios)
+)
+-- add more rows here
 GO
+
+-- Create a new stored procedure called 'StoredProcedureName' in schema 'SchemaName'
+-- Drop the stored procedure if it already exists
+IF EXISTS (
+SELECT *
+    FROM INFORMATION_SCHEMA.ROUTINES
+WHERE SPECIFIC_SCHEMA = N'Big Data Klabin'
+    AND SPECIFIC_NAME = N'Lincenciamento de software Klabin: Projeto Gestão de Ativos'
+)
+DROP PROCEDURE SchemaName.Big Data Klabin
+GO
+-- Create the stored procedure in the specified schema
+CREATE PROCEDURE SchemaName.StoredProcedureName
+    @param1 /len VALUES/ int /STRING_AGG(Nome)/ = 0, /default/
+    @param2 /len second row/ int /STRING_AGG(Version)/ = 0 /default/
+-- add more stored procedure parameters here
+AS
+    -- body of the stored procedure
+    SELECT @param1, @param2
+GO
+-- example to execute the stored procedure we just created
+EXECUTE SchemaName.StoredProcedureName 1 /-- Get a list of tables and views in the current database
+SELECT table_catalog [database], table_schema [schema], table_name name, table_type type
+FROM INFORMATION_SCHEMA.TABLES
+GO/, 2 /*value_for_param2*/
+GO
+
+create database klabin Gestão de ativos
+set hive.cli.print.header = TRUE
+
+show tables;
+desc klabin big data;
+insert into table teste01(1);
+insert into table teste01 values(1);
+select * from teste01;
+insert into table teste01 values(2);
+
+-- Create a new stored procedure called 'Registro ativos SCCM' in schema 'SchemaName'
+-- Drop the stored procedure if it already exists
+IF EXISTS (
+SELECT *
+    FROM INFORMATION_SCHEMA.ROUTINES
+WHERE SPECIFIC_SCHEMA = N'SchemaName'
+    AND SPECIFIC_NAME = N'Registro ativos SCCM'
+)
+DROP PROCEDURE SchemaName.Registro ativos SCCM
+GO
+-- Create the stored procedure in the specified schema
+CREATE PROCEDURE SchemaName.Registro ativos SCCM
+    @param1 /*parameter name*/ int /*datatype_for_param1*/ = 0, /*default_value_for_param1*/
+    @param2 /*parameter name*/ int /*datatype_for_param1*/ = 0 /*default_value_for_param2*/
+-- add more stored procedure parameters here
+AS
+    -- body of the stored procedure
+    SELECT @param1, @param2
+GO
+-- example to execute the stored procedure we just created
+EXECUTE SchemaName.Registro ativos SCCM 1 /*value_for_param1*/, 2 /*value_for_param2*/
+GO
+
+-- Select rows from a Table or View 'SCCM' in schema 'SchemaName'
+SELECT * FROM SchemaName.SCCM
+WHERE 	/* add search conditions here */
+GO
+ENCRYPTED
+-- Drop the view 'Ativos Microsoft' in schema 'SchemaName'
+IF EXISTS (
+    SELECT *
+        FROM sys.views
+        JOIN sys.schemas
+            ON sys.views.schema_id = sys.schemas.schema_id
+    WHERE sys.schemas.name = N'SchemaName'
+        AND sys.views.name = N'Ativos Microsoft'
+)
+    DROP VIEW SchemaName.Ativos Microsoft
+GO 
+sql createDataFrame
+hive > show DATABASE;
+bigdata_klabin-- Insert rows into table 'Klabin';
+INSERT INTO Klabin
+( -- columns to insert data into
+ [Licença Office], [SQL], [Servidores], [Adobe], [Autodesk]
+)
+VALUES
+( -- first row: values for the columns in the list above
+ STRING_AGG(Nome), STRING_AGG(Nome), STRING_AGG(ProductName), STRING_AGG(ProductName), STRING_AGG(Version)
+),
+( -- second row: values for the columns in the list above
+ STRING_AGG(Version), STRING_AGG(ProductName), STRING_AGG(Version), INTEGER(NetBios), INTEGER(NetBios)
+)
+-- add more rows here
+GO
+
+-- Create a new stored procedure called 'StoredProcedureName' in schema 'SchemaName'
+-- Drop the stored procedure if it already exists
+IF EXISTS (
+SELECT *
+    FROM INFORMATION_SCHEMA.ROUTINES
+WHERE SPECIFIC_SCHEMA = N'Big Data Klabin'
+    AND SPECIFIC_NAME = N'Lincenciamento de software Klabin: Projeto Gestão de Ativos'
+)
+DROP PROCEDURE SchemaName.Big Data Klabin
+GO
+-- Create the stored procedure in the specified schema
+CREATE PROCEDURE SchemaName.StoredProcedureName
+    @param1 /len VALUES/ int /STRING_AGG(Nome)/ = 0, /default/
+    @param2 /len second row/ int /STRING_AGG(Version)/ = 0 /default/
+-- add more stored procedure parameters here
+AS
+    -- body of the stored procedure
+    SELECT @param1, @param2
+GO
+-- example to execute the stored procedure we just created
+EXECUTE SchemaName.StoredProcedureName 1 /-- Get a list of tables and views in the current database
+SELECT table_catalog [database], table_schema [schema], table_name name, table_type type
+FROM INFORMATION_SCHEMA.TABLES
+GO/, 2 /*value_for_param2*/
+GO
+
+create database klabin Gestão de ativos
+set hive.cli.print.header = TRUE
+
+show tables;
+desc klabin big data;
+insert into table teste01(1);
+insert into table teste01 values(1);
+select * from teste01;
+insert into table teste01 values(2);
+
+-- Create a new stored procedure called 'Registro ativos SCCM' in schema 'SchemaName'
+-- Drop the stored procedure if it already exists
+IF EXISTS (
+SELECT *
+    FROM INFORMATION_SCHEMA.ROUTINES
+WHERE SPECIFIC_SCHEMA = N'SchemaName'
+    AND SPECIFIC_NAME = N'Registro ativos SCCM'
+)
+DROP PROCEDURE SchemaName.Registro ativos SCCM
+GO
+-- Create the stored procedure in the specified schema
+CREATE PROCEDURE SchemaName.Registro ativos SCCM
+    @param1 /*parameter name*/ int /*datatype_for_param1*/ = 0, /*default_value_for_param1*/
+    @param2 /*parameter name*/ int /*datatype_for_param1*/ = 0 /*default_value_for_param2*/
+-- add more stored procedure parameters here
+AS
+    -- body of the stored procedure
+    SELECT @param1, @param2
+GO
+-- example to execute the stored procedure we just created
+EXECUTE SchemaName.Registro ativos SCCM 1 /*value_for_param1*/, 2 /*value_for_param2*/
+GO
+
+-- Select rows from a Table or View 'SCCM' in schema 'SchemaName'
+SELECT * FROM SchemaName.SCCM
+WHERE 	/* add search conditions here */
+GO
+ENCRYPTED
+-- Drop the view 'Ativos Microsoft' in schema 'SchemaName'
+IF EXISTS (
+    SELECT *
+        FROM sys.views
+        JOIN sys.schemas
+            ON sys.views.schema_id = sys.schemas.schema_id
+    WHERE sys.schemas.name = N'SchemaName'
+        AND sys.views.name = N'Ativos Microsoft'
+)
+    DROP VIEW SchemaName.Ativos Microsoft
+GO 
+
+Endpoint failTaskOnFailedTests
+
+break
+read and write 
+StoredProcedureName
+stop procedure
