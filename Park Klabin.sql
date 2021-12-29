@@ -669,3 +669,43 @@ insert into table teste01(1);
 insert into table teste01 values(1);
 select * from teste01;
 insert into table teste01 values(2);
+
+-- Create a new stored procedure called 'Registro ativos SCCM' in schema 'SchemaName'
+-- Drop the stored procedure if it already exists
+IF EXISTS (
+SELECT *
+    FROM INFORMATION_SCHEMA.ROUTINES
+WHERE SPECIFIC_SCHEMA = N'SchemaName'
+    AND SPECIFIC_NAME = N'Registro ativos SCCM'
+)
+DROP PROCEDURE SchemaName.Registro ativos SCCM
+GO
+-- Create the stored procedure in the specified schema
+CREATE PROCEDURE SchemaName.Registro ativos SCCM
+    @param1 /*parameter name*/ int /*datatype_for_param1*/ = 0, /*default_value_for_param1*/
+    @param2 /*parameter name*/ int /*datatype_for_param1*/ = 0 /*default_value_for_param2*/
+-- add more stored procedure parameters here
+AS
+    -- body of the stored procedure
+    SELECT @param1, @param2
+GO
+-- example to execute the stored procedure we just created
+EXECUTE SchemaName.Registro ativos SCCM 1 /*value_for_param1*/, 2 /*value_for_param2*/
+GO
+
+-- Select rows from a Table or View 'SCCM' in schema 'SchemaName'
+SELECT * FROM SchemaName.SCCM
+WHERE 	/* add search conditions here */
+GO
+ENCRYPTED
+-- Drop the view 'Ativos Microsoft' in schema 'SchemaName'
+IF EXISTS (
+    SELECT *
+        FROM sys.views
+        JOIN sys.schemas
+            ON sys.views.schema_id = sys.schemas.schema_id
+    WHERE sys.schemas.name = N'SchemaName'
+        AND sys.views.name = N'Ativos Microsoft'
+)
+    DROP VIEW SchemaName.Ativos Microsoft
+GO
